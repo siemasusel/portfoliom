@@ -1,0 +1,99 @@
+@media only screen and (max-width: 768px) {
+    footer {
+        display: none;
+    }
+    .footer-b {
+      display: block;
+    }
+    .left-area-background {
+      min-height: 0px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    footer {
+      display: block;
+    }
+    .footer-b {
+      display: none;
+    }
+    .left-area-background {
+      min-height: 100vh;
+    }
+}
+.hovereffect{
+  position: relative;
+}
+.right-button-about{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  padding: 4px 8px;
+  /* border: 1px solid #373737; */
+  color: #f4f4f4 !important;
+  background-color: rgba(55, 55, 55, 0.7);
+}
+.right-button-about:hover{
+  /* border: 1px solid #373737; */
+  background-color: rgba(55, 55, 55, 0.9);
+}
+.overlay{
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition:background 0.3s;
+  -moz-transition:background 0.3s;
+  -o-transition:background 0.3s;
+  transition:background 0.3s
+}
+
+.overlay a{
+  color: #373737;
+}
+li a{
+  color: #373737;
+}
+li a:hover{
+  color: #373737;
+}
+
+.list-group-item{
+  background-color: transparent;
+}
+.left-area-background {
+  background-color: #eee;
+}
+.right-area-background {
+  background-color: #f4f4f4;
+}
+left-avatar-bordercolor {
+  border-color: #373737;
+}
+
+.filter {
+  cursor: pointer;
+}
+.filter:hover {
+  text-decoration: underline;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #373737;
+}
+.footer-b {
+  color: #373737;
+}
+.modal-body{
+  padding: 0!important;
+}
