@@ -39,9 +39,10 @@ else {
     <div class="d-flex flex-wrap justify-content-left project-conteiner">
       <?php echo $modalThumb; ?>
     </div>
+    <?php echo $modalContent; ?>
   </div>
 
-  <?php echo $modalContent; ?>
+
 
 <script>
 $(function() {

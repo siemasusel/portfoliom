@@ -1,6 +1,6 @@
 <?php
 //input name: photo
-//return $isPicture true
+//setting $pictureName [string], $isPicture [boolean]
 if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
   $uploaddir = 'img/';
   $picturePath = '';

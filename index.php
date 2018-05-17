@@ -5,19 +5,32 @@ $project_err = "";
 // $projects = [];
 $modalThumb = '';
 $modalContent = '';
-$sql = "SELECT Id, PicturePath,  Title, Content, DATE(AddDate) AS AddingDate FROM projects ORDER BY AddDate DESC";
+$sqlProjects = "SELECT Id, PicturePath, Title, Content, AddDate AS AddingDate FROM projects ORDER BY AddDate DESC";
 
-if($result = $mysqli->query($sql)){
+if($result = $mysqli->query($sqlProjects)){
   while($tmp = $result->fetch_assoc()){
     // $projects[array_shift($tmp)] = $tmp;
     // array_push($projects, $tmp);
-    $modalThumb .= '<div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter=" ' . date('Y', strtotime($tmp['AddingDate']) ) . '"> <div class="hovereffect"> <a href="#"><img src="img/' . $tmp['PicturePath'] . '"class="img-fluid"></a> <div class="overlay"> <a href="#" class="right-button-about" data-toggle="modal" data-target="#lightbox' . $tmp['Id'] . '">About</a> </div></div></div>';
+    $modalThumb .= '<div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="' . date('Y', strtotime($tmp['AddingDate']) ) . '"> <div class="hovereffect"> <a href="#"><img src="img/' . $tmp['PicturePath'] . '"class="img-fluid"></a> <div class="overlay"> <a href="#" class="right-button-about" data-toggle="modal" data-target="#lightbox' . $tmp['Id'] . '">About</a> </div></div></div>';
     $modalContent .= '<div class="modal fade" id="lightbox' . $tmp['Id'] . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" > <div class="modal-dialog" role="document" style="max-width: 80%;"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="exampleModalLabel">' . $tmp['Title'] . '</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div><div class="modal-body" style="padding: 0;"> <div class="container" style="margin: 0; max-width: none;"> <div class="row"> <div class="col-8 bg-dark"> <a href="#"><img src="img/' . $tmp['PicturePath'] . '" class="img-fluid mx-auto d-block"></a> </div><div class="col-4" style="padding-top: 1rem;">' . $tmp['Content'] . '</div></div></div></div><div class="modal-footer"> <span class="modal-date">' . $tmp['AddingDate'] . '</span> </div></div></div></div>';
   }
 }
 else {
   $project_err = 'database error';
   echo $project_err;
+}
+
+$currentName = '';
+$sql_err = '';
+$sqlGetName = 'SELECT name, PicturePath from personalinfo;';
+if($result = $mysqli->query($sqlGetName)){
+  $result = $result->fetch_assoc();
+  $currentName = $result['name'];
+  $currentPhoto = $result['PicturePath'];
+}
+else{
+  $sql_err = 'Error sql query name';
+  echo $sql_err;
 }
 ?>
 
@@ -39,8 +52,8 @@ else {
     <div class="col-sm-12 col-md-3 col-lg-2 left-area-background"> <!-- LEFT AREA -->
       <div class="sticky-top pt-3" >
         <figure class="figure text-center mb-5"> <!-- PHOTO AND NAME BAR -->
-          <img src="img/avatar.png" class="figure-img img-fluid rounded-circle border left-avatar-bordercolor" alt="Photo" width="35%" height="35%">
-          <figcaption><p class="font-weight-normal" style="font-size: 22px;">Magdalena Tomasik</p></figcaption>
+          <img src="img/<?php echo $currentPhoto; ?>" class="figure-img img-fluid rounded-circle border left-avatar-bordercolor" alt="Photo" width="35%" height="35%">
+          <figcaption><p class="font-weight-normal" style="font-size: 22px;"><?php echo $currentName ?></p></figcaption>
         </figure>
         <nav class="navbar flex-column text-right nav-stacked" ><!-- NAV MENU -->
           <ul class="navbar-nav" >
@@ -71,79 +84,9 @@ else {
     <div class="col-sd-12 col-md-9 col-lg-10 pt-3 pl-5 pr-5"> <!-- RIGHT AREA -->
       <p class="h3 bg-faded mb-4 font-weight-normal text-center">SOME OF MY PROJECTS</p>
       <div class="d-flex flex-wrap justify-content-left project-conteiner">
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2018">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=251" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2015">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=253" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2015">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=252" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2016">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=251" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2017">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=253" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2018">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=252" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl"data-filter="2016">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=251" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2017">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=253" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-        <div class="p-2 col-lg-3 col-md-4 col-sm-12 project-pnl" data-filter="2015">
-          <div class="hovereffect">
-            <a href="#"><img src="https://unsplash.it/600.jpg?image=252" class="img-fluid"></a>
-            <div class="overlay">
-              <a href="#" class="right-button-about">About</a>
-            </div>
-          </div>
-        </div>
-    </div>
+        <?php echo $modalThumb; ?>
+      </div>
+      <?php echo $modalContent; ?>
   </div>
 </div>
 <footer class="footer-b mb-2 mr-2">

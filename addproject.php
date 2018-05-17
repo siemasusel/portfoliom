@@ -59,7 +59,7 @@ if($_SESSION['log_as_admin'] !== "permit"){
         <textarea name="content" class="form-control" rows="8" aria-label="With textarea" required></textarea>
         <div class="invalid-feedback">This field can't be empty.</div>
       </div>
-      <button type="reset" value="Reset">Reset</button>
+      <!-- <button type="reset" value="Reset">Reset</button> -->
       <button type="submit" name="submit" class="btn btn-primary mb-3">Submit</button>
     </form>
 </div>
