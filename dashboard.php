@@ -29,6 +29,7 @@
     </div>
     <div class="list-group">
       <a href="addproject.php" class="list-group-item">Add Project</a>
+      <a href="manageproject.php" class="list-group-item">Edit or Delete Project</a>
       <a href="setpersonal.php" class="list-group-item">Set personal info (name, photo)</a>
       <a href="logout.php" class="list-group-item">Logout</a>
     </div>

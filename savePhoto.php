@@ -1,7 +1,7 @@
 <?php
 //input name: photo
 //setting $pictureName [string], $isPicture [boolean]
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+if($_SERVER["REQUEST_METHOD"] == "POST") {
   $uploaddir = 'img/';
   $picturePath = '';
   $isPicture = false;
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     }
     if($uploadPhotoOk){
       if(move_uploaded_file($temp_name, $picturePath)){
-        echo "plik został załadowany";
+        // echo "plik został załadowany";
         $isPicture = true;
       }
       else {
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     }
   }
   else{
-    echo "wystapil blad";
+    // echo "wystapil blad";
   }
 }
 ?>

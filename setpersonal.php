@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
       <input type="file" name="photo" class="custom-file-input" id="picture" >
       <label class="custom-file-label" for="picture">Set New Photo</label>
     </div>
-    <button type="submit" name="submit" class="btn btn-primary mb-3">Submit</button>
+    <button type="submit" name="submit" class="btn btn-primary mb-3" onclick="return confirm('Are you sure?');">Submit</button>
   </form>
 
   <a class="btn btn-primary" data-toggle="collapse" href="#collapsePhoto" role="button" aria-expanded="false" aria-controls="collapsePhoto">
